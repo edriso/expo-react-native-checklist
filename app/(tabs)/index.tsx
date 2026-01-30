@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { nanoid } from 'nanoid';
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Button, Platform, StyleSheet, TextInput } from 'react-native';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { HelloWave } from '@/components/hello-wave';
 import { ThemedText } from '@/components/themed-text';
@@ -8,7 +9,7 @@ import { ThemedView } from '@/components/themed-view';
 import { Link } from 'expo-router';
 
 export type TaskType = {
-  id: number;
+  id: string;
   text: string;
   completed: boolean;
 };
@@ -16,6 +17,15 @@ export type TaskType = {
 export default function HomeScreen() {
   const [tasks, setTasks] = useState<TaskType[]>([]);
   const [inputText, setInputText] = useState('');
+
+  const handleAddTask = () => {
+    if (!inputText.trim()) return;
+    setTasks((prev) => [
+      ...prev,
+      { id: nanoid(), text: inputText.trim(), completed: false },
+    ]);
+    setInputText('');
+  };
 
   return (
     <ParallaxScrollView
@@ -29,6 +39,15 @@ export default function HomeScreen() {
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Welcome!</ThemedText>
         <HelloWave />
+      </ThemedView>
+      <ThemedView style={styles.addTaskContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="New task..."
+          value={inputText}
+          onChangeText={setInputText}
+        />
+        <Button title="Add" onPress={handleAddTask} />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>
@@ -92,6 +111,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
+  },
+  addTaskContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 16,
+  },
+  input: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
   },
   stepContainer: {
     gap: 8,
