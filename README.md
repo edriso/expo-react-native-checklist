@@ -1,50 +1,58 @@
-# Welcome to your Expo app 👋
+# Little Things Todo
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple task list app built with **Expo** and **React Native**.
 
-## Get started
+---
 
-1. Install dependencies
+## How to set up and run the app
 
+1. **Clone the repo** (or download the project).
+
+2. **Install dependencies**
    ```bash
    npm install
    ```
 
-2. Start the app
-
+3. **Start the app**
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+4. **Open the app**
+   - On your **phone**: scan the QR code with the Expo Go app.
+   - On **iOS simulator**: press `i` in the terminal.
+   - On **Android emulator**: press `a` in the terminal.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+You need **Node.js** installed. If you use a phone, install **Expo Go** from the App Store or Play Store.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## What the app does (features)
 
-When you're ready, run:
+- **Add a task** — Type in the input box and tap **Add**. Your task appears in the list.
+- **Mark as complete** — Tap the checkbox or the **Complete** button. The task gets a line through it. Tap again to undo.
+- **Delete a task** — Tap **Delete** on a task to remove it from the list.
+- **See all tasks** — The list shows every task you added. You get a short message when you complete or delete something.
 
-```bash
-npm run reset-project
-```
+The app uses light and dark theme colors (soft blue style).
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## Libraries used
 
-To learn more about developing your project with Expo, look at the following resources:
+- **Expo** — Tooling and packages to build and run the app easily.
+- **React Native** — To build the mobile UI (screens, buttons, list, etc.).
+- **nanoid** — A small library to create unique IDs for each task so the list can track them correctly.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Everything else (routing, tabs, etc.) comes from the default Expo setup. No extra UI libraries.
 
-## Join the community
+---
 
-Join our community of developers creating universal apps.
+## Project structure (simple)
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- **`app/(tabs)/index.tsx`** — Main screen: input, Add button, and task list.
+- **`constants/theme.ts`** — Colors for light and dark mode.
+
+---
+
+*Made as a first React Native project.*
