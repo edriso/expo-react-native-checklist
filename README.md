@@ -1,6 +1,7 @@
-# Little Things Todo
+# Do Meows
 
-A simple task list app built with **Expo** and **React Native**.
+A simple, cat-themed task list app built with **Expo** and **React Native**.  
+*~ your daily scratch list ~*
 
 ---
 
@@ -29,12 +30,12 @@ You need **Node.js** installed. If you use a phone, install **Expo Go** from the
 
 ## What the app does (features)
 
-- **Add a task** — Type in the input box and tap **Add**. Your task appears in the list.
-- **Mark as complete** — Tap the checkbox or the **Complete** button. The task gets a line through it. Tap again to undo.
-- **Delete a task** — Tap **Delete** on a task to remove it from the list.
-- **See all tasks** — The list shows every task you added. You get a short message when you complete or delete something.
+- **Add a task** — Type in the input box and tap **Add**. Your task appears in the list. A cat animation shows when you add one.
+- **Mark as complete** — Tap the checkbox or the **Complete** button. The task gets a line through it. A celebration cat appears when you complete. Tap again to undo (another cat reaction).
+- **Delete a task** — Tap **Delete** on a task to remove it from the list. A cat reaction shows when you delete.
+- **See all tasks** — The list shows every task you added. Feedback uses cat GIFs (or short text if an image fails to load).
 
-The app uses light and dark theme colors (soft blue style).
+The app uses soft blue theme colors and supports light and dark mode.
 
 ---
 
@@ -42,7 +43,8 @@ The app uses light and dark theme colors (soft blue style).
 
 - **Expo** — Tooling and packages to build and run the app easily.
 - **React Native** — To build the mobile UI (screens, buttons, list, etc.).
-- **nanoid** — A small library to create unique IDs for each task so the list can track them correctly.
+- **expo-image** — To show the cat feedback GIFs reliably on device.
+- **nanoid** (non-secure) — To create unique IDs for each task so the list can track them correctly (React Native–friendly version).
 
 Everything else (routing, tabs, etc.) comes from the default Expo setup. No extra UI libraries.
 
@@ -50,8 +52,10 @@ Everything else (routing, tabs, etc.) comes from the default Expo setup. No extr
 
 ## Project structure (simple)
 
-- **`app/(tabs)/index.tsx`** — Main screen: input, Add button, and task list.
-- **`constants/theme.ts`** — Colors for light and dark mode.
+- **`app/(tabs)/index.tsx`** — Main screen: title, input, Add button, and task list with cat feedback overlay.
+- **`app/(tabs)/_layout.tsx`** — Single “Tasks” tab with checklist icon.
+- **`constants/theme.ts`** — Colors for light and dark mode (soft blue, card, delete, etc.).
+- **`assets/images/`** — Cat feedback GIFs: `cat-yay.gif`, `cat-sus.gif`, `cat-watching.gif`, `cat-close.gif`.
 
 ---
 

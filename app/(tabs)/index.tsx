@@ -99,7 +99,7 @@ export default function HomeScreen() {
       >
         <View style={styles.titleBlock}>
           <ThemedText type="title" style={styles.screenTitle}>
-            Do Mewas
+            Do Meows
           </ThemedText>
           <ThemedText style={styles.screenSubtitle}>
             ~ your daily scratch list ~
