@@ -62,6 +62,17 @@ export default function HomeScreen() {
       <ThemedView style={styles.taskList}>
         {tasks.map((task) => (
           <View key={task.id} style={styles.taskRow}>
+            <Pressable
+              onPress={() => handleToggleComplete(task.id)}
+              style={styles.checkboxWrapper}
+              hitSlop={8}
+            >
+              <View style={[styles.checkbox, task.completed && styles.checkboxChecked]}>
+                {task.completed && (
+                  <ThemedText style={styles.checkboxCheck}>✓</ThemedText>
+                )}
+              </View>
+            </Pressable>
             <ThemedText
               style={[styles.taskText, task.completed && styles.taskTextCompleted]}
               numberOfLines={1}
@@ -181,12 +192,34 @@ const styles = StyleSheet.create({
     borderColor: '#ddd',
     borderRadius: 8,
   },
+  checkboxWrapper: {
+    padding: 4,
+  },
+  checkbox: {
+    width: 24,
+    height: 24,
+    borderWidth: 2,
+    borderColor: '#666',
+    borderRadius: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  checkboxChecked: {
+    backgroundColor: '#0a7',
+    borderColor: '#0a7',
+  },
+  checkboxCheck: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
   taskText: {
     flex: 1,
   },
   taskTextCompleted: {
     textDecorationLine: 'line-through',
-    opacity: 0.7,
+    opacity: 0.6,
+    color: '#888',
   },
   taskControls: {
     flexDirection: 'row',
